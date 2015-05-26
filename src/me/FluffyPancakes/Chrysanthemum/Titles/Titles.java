@@ -1,5 +1,7 @@
 package me.FluffyPancakes.Chrysanthemum.Titles;
 
-public class Titles {
+import org.bukkit.event.Listener;
+
+public class Titles implements Listener {
 
 }

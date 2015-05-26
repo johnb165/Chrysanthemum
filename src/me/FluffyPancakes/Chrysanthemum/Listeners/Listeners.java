@@ -1,5 +1,7 @@
 package me.FluffyPancakes.Chrysanthemum.Listeners;
 
-public class Listeners {
+import org.bukkit.event.Listener;
+
+public class Listeners implements Listener {
 
 }

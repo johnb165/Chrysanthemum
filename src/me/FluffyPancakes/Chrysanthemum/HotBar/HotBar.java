@@ -1,5 +1,7 @@
 package me.FluffyPancakes.Chrysanthemum.HotBar;
 
-public class HotBar {
+import org.bukkit.event.Listener;
+
+public class HotBar implements Listener {
 
 }

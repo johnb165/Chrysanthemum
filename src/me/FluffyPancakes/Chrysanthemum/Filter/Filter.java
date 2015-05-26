@@ -1,5 +1,7 @@
 package me.FluffyPancakes.Chrysanthemum.Filter;
 
-public class Filter {
+import org.bukkit.event.Listener;
+
+public class Filter implements Listener {
 
 }

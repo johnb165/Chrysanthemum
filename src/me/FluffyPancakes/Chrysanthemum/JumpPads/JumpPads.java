@@ -1,5 +1,7 @@
 package me.FluffyPancakes.Chrysanthemum.JumpPads;
 
-public class JumpPads {
+import org.bukkit.event.Listener;
+
+public class JumpPads implements Listener {
 
 }

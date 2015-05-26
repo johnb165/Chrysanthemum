@@ -34,11 +34,11 @@ public class Main extends JavaPlugin implements Listener {
 		Player player = (Player)sender;		
 		if (cmd.getName().equalsIgnoreCase("chrysanthemum")) {
 			if (a.length == 0) {
-				player.sendMessage("&d&m------------".replaceAll("&", "§") + "&5&l[&d&lChrysanthemum&5&l]" + "&c&m------------".replaceAll("&", "§"));
+				player.sendMessage("&d&m------------&5&l[&d&lChrysanthemum&5&l]&c&m------------".replaceAll("&", "§"));
 				player.sendMessage("   &d".replaceAll("&", "§"));
 				player.sendMessage("   &d".replaceAll("&", "§"));
 				player.sendMessage("   &d".replaceAll("&", "§"));
-				player.sendMessage("&d&m-----------------------------------------".replaceAll("&", "§"));
+				player.sendMessage("&d&m-------------------------------------------".replaceAll("&", "§"));
 				return true;
 			}
 		}
