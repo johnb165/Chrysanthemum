@@ -42,6 +42,9 @@ public class Main extends JavaPlugin implements Listener {
 				return true;
 			}
 		}
+		if (cmd.getName().equalsIgnoreCase("hats")) {
+			
+		}
 		return false;	
 	}
 }
