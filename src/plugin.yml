@@ -2,6 +2,7 @@ name: Chrysanthemum
 author: FluffyPancakes
 version: 1.0
 main: me.FluffyPancakes.Chrysanthemum.Main
+depend: [Vault]
 commands:
    Chrysanthemum:
       description: Displays information about the plugin.

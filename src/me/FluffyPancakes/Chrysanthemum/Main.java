@@ -24,7 +24,7 @@ public class Main extends JavaPlugin implements Listener {
 		plugin = this;
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(this, this);
-		getLogger().info("Enabled");
+		getLogger().info("- Enabled");
 		try {  
 			Metrics metrics = new Metrics(this);
 		    metrics.start();
@@ -34,7 +34,7 @@ public class Main extends JavaPlugin implements Listener {
 			
 		}
 		if (!setupEconomy() ) {
-            getLogger().info(String.format("[%s] Disabled Due To No Vault Dependency Found!", getDescription().getName()));
+            getLogger().info("No Vault Dependency Found!");
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
