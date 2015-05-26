@@ -1,5 +1,9 @@
 package me.FluffyPancakes.Chrysanthemum;
 
+import java.io.IOException;
+
+import metrics.src.main.java.org.mcstats.Metrics;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -17,7 +21,15 @@ public class Main extends JavaPlugin implements Listener {
 		plugin = this;
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(this, this);
-		getLogger().info("- Enabled");
+		getLogger().info("Enabled");
+		try {  
+			Metrics metrics = new Metrics(this);
+		    metrics.start();
+		    getLogger().info("Attemting To Connect To Metrics");
+		} catch (IOException e) {
+			getLogger().info("Failed To Connect To Metrics D:");
+			
+		}
 	}
 	
 	@Override
