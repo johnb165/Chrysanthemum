@@ -6,6 +6,7 @@ import org.mcstats.Metrics;
 
 import me.FluffyPancakes.Chrysanthemum.Config;
 import me.FluffyPancakes.Chrysanthemum.AutoUpdater.AutoUpdater;
+import me.FluffyPancakes.Chrysanthemum.Listeners.Listeners;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.command.Command;
@@ -27,11 +28,12 @@ public class Main extends JavaPlugin implements Listener {
 		plugin = this;
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(this, this);
+		manager.registerEvents(new Listeners(), this);
 		getLogger().info("- Enabled");
 		Config.saveDefaultConfig();
 		try {
 			getLogger().info("Latest Version: " + AutoUpdater.checkUpdate());
-			if (Config.getConfig().getString("Config.Version") == AutoUpdater.checkUpdate()) {
+			if (Config.getConfig().getString("Config.Version").equals(AutoUpdater.checkUpdate())) {
 				getLogger().info("You Are Using The Latest Version :D");
 			}
 		} catch (IOException e1) {
@@ -67,9 +69,10 @@ public class Main extends JavaPlugin implements Listener {
 		if (cmd.getName().equalsIgnoreCase("chrysanthemum")) {
 			if (a.length == 0) {
 				player.sendMessage("&d&m-------------&5&l[&d&lChrysanthemum&5&l]&d&m-------------".replaceAll("&", "§"));
-				player.sendMessage("&e/Chrysanthemum help - displays help information&d".replaceAll("&", "§"));
-				player.sendMessage("&e/Chrysanthemum info - displays plugin information&d".replaceAll("&", "§"));
-				player.sendMessage("&e/Chrysanthemum reload - reloads the plugin&d".replaceAll("&", "§"));
+				player.sendMessage("&6&l/Chrysanthemum help &e- displays help information&d".replaceAll("&", "§"));
+				player.sendMessage("&6&l/Chrysanthemum info &e- displays plugin information&d".replaceAll("&", "§"));
+				player.sendMessage("&6&l/Chrysanthemum reload &e- reloads the plugin&d".replaceAll("&", "§"));
+				player.sendMessage("&6&l/Chrysanthemum update &e- updates the plugin&d".replaceAll("&", "§"));
 				player.sendMessage("&d&m-----------------------------------------".replaceAll("&", "§"));
 				return true;
 			}
@@ -90,7 +93,6 @@ public class Main extends JavaPlugin implements Listener {
 		}
 		return false;	
 	}
-	
 
     private boolean setupEconomy() {
         if (getServer().getPluginManager().getPlugin("Vault") == null) {

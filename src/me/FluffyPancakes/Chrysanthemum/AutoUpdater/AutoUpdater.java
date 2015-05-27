@@ -7,6 +7,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import me.FluffyPancakes.Chrysanthemum.Config;
+
+import org.bukkit.entity.Player;
+
 public class AutoUpdater {
 	
 	public static String checkUpdate() throws IOException {
@@ -24,4 +28,21 @@ public class AutoUpdater {
         }
 		return line;
     }
+	
+	public static void onJoinCheck(Player player) {
+		if (player.isOp()) {
+			try {
+				String latest = AutoUpdater.checkUpdate();
+				String version = Config.getConfig().getString("Config.Version");
+				if (!version.equals(latest)) {
+					player.sendMessage("&5&l[&d&lChrysanthemum&5&l] &eYou are running version &6&l".replaceAll("&", "§") + version + "&e of this plugin. The latest version is &6&l".replaceAll("&", "§") + latest + "&e. Type &6&l/Chrysanthemum update &eto update the plugin.".replaceAll("&", "§"));
+				}
+				if (version.equals(latest)) {
+					player.sendMessage("&5&l[&d&lChrysanthemum&5&l] &eYou are running version &6&l".replaceAll("&", "§") + version + "&e of this plugin. This is the latest version!".replaceAll("&", "§"));
+				}
+			} catch (IOException e1) {
+				
+			}
+		}
+	}
 }
