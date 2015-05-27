@@ -32,8 +32,15 @@ public class Main extends JavaPlugin implements Listener {
 		getLogger().info("- Enabled");
 		Config.saveDefaultConfig();
 		try {
-			getLogger().info("Latest Version: " + AutoUpdater.checkUpdate());
-			if (Config.getConfig().getString("Config.Version").equals(AutoUpdater.checkUpdate())) {
+			String latest = AutoUpdater.checkUpdate();
+			String version = Config.getConfig().getString("Config.Version");
+			getLogger().info("Latest Version: " + latest);
+			getLogger().info("Current Version: " + version);
+			if (!version.equals(latest)) {
+				getLogger().info("You Are Not Using The Latest Version D:");
+				getLogger().info("Type /Chrysanthemum update to update!");
+			}
+			if (version.equals(latest)) {
 				getLogger().info("You Are Using The Latest Version :D");
 			}
 		} catch (IOException e1) {
