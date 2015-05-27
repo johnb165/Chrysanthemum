@@ -5,7 +5,7 @@
 Config:
 
   #Don't replace the version, this is for plugin auto updating.
-  Version: "0.1a"
+  Version: "v0.1a"
 
 
 

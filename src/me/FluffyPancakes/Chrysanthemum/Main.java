@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.mcstats.Metrics;
 
 import me.FluffyPancakes.Chrysanthemum.Config;
+import me.FluffyPancakes.Chrysanthemum.AutoUpdater.AutoUpdater;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.command.Command;
@@ -28,6 +29,14 @@ public class Main extends JavaPlugin implements Listener {
 		manager.registerEvents(this, this);
 		getLogger().info("- Enabled");
 		Config.saveDefaultConfig();
+		try {
+			getLogger().info("Latest Version: " + AutoUpdater.checkUpdate());
+			if (Config.getConfig().getString("Config.Version") == AutoUpdater.checkUpdate()) {
+				getLogger().info("You Are Using The Latest Version :D");
+			}
+		} catch (IOException e1) {
+			getLogger().info("Latest Version:" + "Unknown");
+		}
 		try {  
 			Metrics metrics = new Metrics(this);
 		    metrics.start();
