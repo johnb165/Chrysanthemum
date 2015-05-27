@@ -1,0 +1,12 @@
+#Chrysanthemum Config File
+#Report Bugs to FluffyPancakes
+#http://pancake.space/report
+
+Config:
+
+  #Don't replace the version, this is for plugin auto updating.
+  Version: "0.1a"
+
+
+
+

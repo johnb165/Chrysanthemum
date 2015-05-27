@@ -1,6 +1,6 @@
 name: Chrysanthemum
 author: FluffyPancakes
-version: 1.0
+version: 0.1a
 main: me.FluffyPancakes.Chrysanthemum.Main
 depend: [Vault]
 commands:

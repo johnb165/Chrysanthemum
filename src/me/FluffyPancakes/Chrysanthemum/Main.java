@@ -3,6 +3,8 @@ package me.FluffyPancakes.Chrysanthemum;
 import java.io.IOException;
 
 import org.mcstats.Metrics;
+
+import me.FluffyPancakes.Chrysanthemum.Config;
 import net.milkbowl.vault.economy.Economy;
 
 import org.bukkit.command.Command;
@@ -25,6 +27,7 @@ public class Main extends JavaPlugin implements Listener {
 		PluginManager manager = getServer().getPluginManager();
 		manager.registerEvents(this, this);
 		getLogger().info("- Enabled");
+		Config.saveDefaultConfig();
 		try {  
 			Metrics metrics = new Metrics(this);
 		    metrics.start();
@@ -42,8 +45,8 @@ public class Main extends JavaPlugin implements Listener {
 	
 	@Override
 	public void onDisable() {
-		getLogger().info("- Disabled");
 		plugin = null;
+		getLogger().info("- Disabled");
 	}
 	
 	public static Plugin getPlugin() {
@@ -54,12 +57,23 @@ public class Main extends JavaPlugin implements Listener {
 		Player player = (Player)sender;		
 		if (cmd.getName().equalsIgnoreCase("chrysanthemum")) {
 			if (a.length == 0) {
-				player.sendMessage("&d&m------------&5&l[&d&lChrysanthemum&5&l]&d&m------------".replaceAll("&", "§"));
-				player.sendMessage("   &d".replaceAll("&", "§"));
-				player.sendMessage("   &d".replaceAll("&", "§"));
-				player.sendMessage("   &d".replaceAll("&", "§"));
-				player.sendMessage("&d&m---------------------------------------".replaceAll("&", "§"));
+				player.sendMessage("&d&m-------------&5&l[&d&lChrysanthemum&5&l]&d&m-------------".replaceAll("&", "§"));
+				player.sendMessage("&e/Chrysanthemum help - displays help information&d".replaceAll("&", "§"));
+				player.sendMessage("&e/Chrysanthemum info - displays plugin information&d".replaceAll("&", "§"));
+				player.sendMessage("&e/Chrysanthemum reload - reloads the plugin&d".replaceAll("&", "§"));
+				player.sendMessage("&d&m-----------------------------------------".replaceAll("&", "§"));
 				return true;
+			}
+			if (a.length == 1) {
+				if (a[0].equalsIgnoreCase("help") && player.hasPermission("chrysanthemum.help")) {
+					
+				}
+				if (a[0].equalsIgnoreCase("info") && player.hasPermission("chrysanthemum.info")) {
+					
+				}
+				if (a[0].equalsIgnoreCase("reload") && player.hasPermission("chrysanthemum.reload")) {
+					
+				}
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("hats")) {
