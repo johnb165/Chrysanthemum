@@ -22,13 +22,13 @@ public class AutoUpdater {
         URL url = new URL("http://pancake.space/api/plugins/Chrysanthemum/Chrysanthemum_Version_Checker.php");
 
         URLConnection con = url.openConnection();
-        InputStream is =con.getInputStream();
+        InputStream inStream = con.getInputStream();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        BufferedReader buffRead = new BufferedReader(new InputStreamReader(inStream));
 
         String line = null;
 
-        while ((line = br.readLine()) != null) {
+        while ((line = buffRead.readLine()) != null) {
             return line;
         }
 		return line;
@@ -45,8 +45,8 @@ public class AutoUpdater {
 				if (version.equals(latest)) {
 					player.sendMessage("&5&l[&d&lChrysanthemum&5&l] &eYou are running version &6&l".replaceAll("&", "§") + version + "&e of this plugin. This is the latest version!".replaceAll("&", "§"));
 				}
-			} catch (IOException e1) {
-				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
