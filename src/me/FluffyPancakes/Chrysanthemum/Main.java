@@ -93,6 +93,15 @@ public class Main extends JavaPlugin implements Listener {
 				if (a[0].equalsIgnoreCase("reload") && player.hasPermission("chrysanthemum.reload")) {
 					
 				}
+				if (a[0].equalsIgnoreCase("update") && player.hasPermission("chrysanthemum.update")) {
+					try {
+						player.sendMessage("&5&l[&d&lChrysanthemum&5&l] &eDownloading update. Check the plugin's folder for an updated version.".replaceAll("&", "§"));
+						AutoUpdater.downloadUpdate();
+					} catch (IOException e) {
+						player.sendMessage("&5&l[&d&lChrysanthemum&5&l] &eAn error occured! :O".replaceAll("&", "§"));
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("hats")) {

@@ -1,9 +1,14 @@
 package me.FluffyPancakes.Chrysanthemum.AutoUpdater;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -44,5 +49,31 @@ public class AutoUpdater {
 				
 			}
 		}
+	}
+	
+	public static void downloadUpdate() throws IOException {
+		URL url = new URL("http://pancake.space/api/plugins/Chrysanthemum/Chrysanthemum-" + checkUpdate() +".jar");
+
+		InputStream inStream = url.openStream();
+		BufferedInputStream bufIn = new BufferedInputStream(inStream);     
+		
+		File fileWrite = new File("plugins\\Chrysanthemum\\Chrysanthemum-" + checkUpdate() +".jar");			
+        OutputStream out = new FileOutputStream(fileWrite);
+        BufferedOutputStream bufOut = new BufferedOutputStream(out);                             
+            
+        byte buffer[] = new byte[4096];
+            
+        while (true) {
+          	
+        	int nRead = bufIn.read(buffer, 0, buffer.length);       
+
+        	if (nRead <= 0)          		
+        		break;
+              
+        	bufOut.write(buffer, 0, nRead);       
+        }                                   
+        bufOut.flush();
+        out.close();
+        inStream.close();
 	}
 }
